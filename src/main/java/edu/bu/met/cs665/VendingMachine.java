@@ -8,7 +8,6 @@
 
 package edu.bu.met.cs665;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -195,6 +194,29 @@ public class VendingMachine {
     public String[] getCondimentMenu(){
         String[] result = new String[CONDIMENT_NAMES.length];
         System.arraycopy(CONDIMENT_NAMES, 0, result, 0, CONDIMENT_NAMES.length);
+        return result;
+    }
+
+    /**
+     * Getter method for beverageBuying.
+     * 
+     * @return the name of beverage selecting
+     */
+    public String getBeverageBuying() {
+        return beverageBuying.getName();
+    }
+
+    /**
+     * Getter method for condimentsBuying.
+     * 
+     * @return the condiments selecting
+     */
+    public Map<String, Integer> getCondimentsBuying() {
+        Map<String, Integer> result = new HashMap<String,Integer>(){{
+            for(Condiment condiment: condimentsBuying.keySet()){
+                put(condiment.getName(), condimentsBuying.get(condiment));
+            };
+        }};
         return result;
     }
 }

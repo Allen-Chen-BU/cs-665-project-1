@@ -62,4 +62,23 @@ public class Condiment {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    /**
+     * To check if the input object equals the condiment
+     * 
+     * @param obj object to be checked
+     * 
+     * @return true if object equals to the condiment
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (super.equals(obj)){
+            return true;
+        }
+        if (obj != null && this.getClass() == obj.getClass()){
+            Condiment condiment = (Condiment) obj;
+            return condiment.name == this.name && condiment.price == this.price;
+        }
+        return false;
+    }
 }
