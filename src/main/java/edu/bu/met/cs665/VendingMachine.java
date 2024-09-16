@@ -60,7 +60,7 @@ public class VendingMachine {
 
     // Types of condiments in machine
     private String[] CONDIMENT_NAMES = new String[] {"Milk", "Sugar"};
-    private Map<String, Double> CONDIMEN_PRICES = new HashMap<String, Double>() {{
+    private Map<String, Double> CONDIMENT_PRICES = new HashMap<String, Double>() {{
         put("Milk", 0.5);
         put("Sugar", 0.5);
     }};
@@ -98,7 +98,7 @@ public class VendingMachine {
         }
         // add condiments
         for (String condimentName : CONDIMENT_NAMES) {
-            Condiment condiment = new Condiment(condimentName, CONDIMEN_PRICES.get(condimentName));
+            Condiment condiment = new Condiment(condimentName, CONDIMENT_PRICES.get(condimentName));
             condiments.add(condiment);
         }
     }
