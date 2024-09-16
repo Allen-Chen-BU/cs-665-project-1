@@ -1,29 +1,23 @@
 
 | CS-665       | Software Design & Patterns |
 |--------------|----------------------------|
-| Name         | FIRST_NAME LAST_NAME       |
-| Date         | MM/DD/YYYY                 |
-| Course       | Fall / Spring / Summer     |
-| Assignment # |                            |
+| Name         | HungHsu(Allen) Chen        |
+| Date         | 09/15/2024                 |
+| Course       | Fall                       |
+| Assignment # | Assignment 1               |
 
 # Assignment Overview
-Please add a paragraph or two overviewing the objectives of the assignment.
+This assignment needs to create a beverage vending mechine. The vending mechine contains variaty of tea and coffee. The customer can select a beverage and decide if they want to pick any condiment such as milk and sugar. They can have max to 3 units of each condiment.
 
 # GitHub Repository Link:
-https://github.com/{YOUR_USERNAME}/cs-665-assignment-{ASSIGNMENT_NUMBER}
+https://github.com/Allen-Chen-BU/cs-665-assignment-1
 
 # Implementation Description 
+Beverage can be added to the vending machine in the accroding to the type of the beverage. Condiment can be added similarly. If there are new types of beverage wants to be added, a new type inherit Beverage class can be created for the new types of beverage, and the beverage needs to be add to vending machine like coffee and tea. New functions can be added at vending machine for new services.
 
+The implementation can be separate to 3 parts, the beverage, condiments, and vending mechine. As beverages and condiments are only used for represent the names and prices, they contains only basic methods (such as getter, setter, and equals). The methods are mostly inside vending mechine as it's the entity that customer communicate with.
 
-For each assignment, please answer the following:
-
-- Explain the level of flexibility in your implementation, including how new object types can
-be easily added or removed in the future.
-- Discuss the simplicity and understandability of your implementation, ensuring that it is
-easy for others to read and maintain.
-- Describe how you have avoided duplicated code and why it is important.
-- If applicable, mention any design patterns you have used and explain why they were
-chosen.
+To avoid duplicate code, each types of beverage inherit the basic attributes and methods from the Beverage class. It also simplify the work on adding new method or attribute for all beverage.
 
 
 # Maven Commands

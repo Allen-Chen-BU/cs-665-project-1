@@ -5,13 +5,14 @@
  * File Name: Coffee.java
  * Description: This class is responsible for the methods and attributes of a Coffee.
  */
+
 package edu.bu.met.cs665.beverage;
 
 /**
  * This is the Coffee class.
  * This class is responsible for representing a Coffee.
  */
-public class Coffee extends Beverage{
+public class Coffee extends Beverage {
     private String bean;
 
     /**

@@ -5,13 +5,14 @@
  * File Name: Tea.java
  * Description: This class is responsible for the methods and attributes of a Tea.
  */
+
 package edu.bu.met.cs665.beverage;
 
 /**
  * This is the Tea class.
  * This class is responsible for representing a Tea.
  */
-public class Tea extends Beverage{
+public class Tea extends Beverage {
     private String leaf;
 
     /**

@@ -3,19 +3,19 @@
  * Course: CS-665 Software Designs & Patterns
  * Date: 09/14/2024
  * File Name: VendingMachine.java
- * Description: This class is responsible for the methods and attributes of a Beverage Vending Machine.
+ * Description: This class is responsible for the methods and 
+ *              attributes of a Beverage Vending Machine.
  */
 
 package edu.bu.met.cs665;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import edu.bu.met.cs665.beverage.Beverage;
 import edu.bu.met.cs665.beverage.Coffee;
 import edu.bu.met.cs665.beverage.Tea;
 import edu.bu.met.cs665.condiment.Condiment;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This is the Condiment class.
@@ -23,47 +23,48 @@ import edu.bu.met.cs665.condiment.Condiment;
  */
 public class VendingMachine {
     // Types of Coffee in the machine
-    private String[] COFFEE_NAMES = new String[] {"Espresso", "Americano", "Latte Macchiato"};
-    private Map<String, Double> COFFEE_PRICES = new HashMap<String, Double>() {{
+    private final String[] COFFEE_NAMES = new String[] {"Espresso", "Americano", "Latte Macchiato"};
+    private final Map<String, Double> COFFEE_PRICES = new HashMap<String, Double>() {{
         put("Espresso", 4.7);
         put("Americano", 2.62);
         put("Latte Macchiato", 3.65);
     }};
-    private Map<String, String> COFFEE_BEAN = new HashMap<String, String>() {{
+    private final Map<String, String> COFFEE_BEAN = new HashMap<String, String>() {{
         put("Espresso", "Arabica");
         put("Americano", "Arabica");
         put("Latte Macchiato", "Arabica");
     }};
-    private Map<String, String> COFFEE_DESC = new HashMap<String, String>() {{
+    private final Map<String, String> COFFEE_DESC = new HashMap<String, String>() {{
         put("Espresso", "Concentrate Coffee");
         put("Americano", "Espresso with water");
         put("Latte Macchiato", "Espresso with milk");
     }};
-    
+
     // Types of tea in machine
-    private String[] TEA_NAMES = new String[] {"Black Tea", "Green Tea", "Yellow Tea"};
-    private Map<String, Double> TEA_PRICES = new HashMap<String, Double>() {{
+    private final String[] TEA_NAMES = new String[] {"Black Tea", "Green Tea", "Yellow Tea"};
+    private final Map<String, Double> TEA_PRICES = new HashMap<String, Double>() {{
         put("Black Tea", 5.75);
         put("Green Tea", 3.99);
         put("Yellow Tea", 5.0);
     }};
-    private Map<String, String> TEA_LEAF = new HashMap<String, String>() {{
+    private final Map<String, String> TEA_LEAF = new HashMap<String, String>() {{
         put("Black Tea", "Camellia sinensis assamica");
         put("Green Tea", "Camellia sinensis");
         put("Yellow Tea", "Camellia sinensis");
     }};
-    private Map<String, String> TEA_DESC = new HashMap<String, String>() {{
+    private final Map<String, String> TEA_DESC = new HashMap<String, String>() {{
         put("Black Tea", "A smoky and fruity tea");
         put("Green Tea", "A tea");
         put("Yellow Tea", "A lightly oxidized tea");
     }};
 
     // Types of condiments in machine
-    private String[] CONDIMENT_NAMES = new String[] {"Milk", "Sugar"};
-    private Map<String, Double> CONDIMENT_PRICES = new HashMap<String, Double>() {{
+    private final String[] CONDIMENT_NAMES = new String[] {"Milk", "Sugar"};
+    private final Map<String, Double> CONDIMENT_PRICES = new HashMap<String, Double>() {{
         put("Milk", 0.5);
         put("Sugar", 0.5);
     }};
+    public static final int CONDIMENT_LIMIT = 3;
 
     private ArrayList<Beverage> beverages = new ArrayList<Beverage>();
     private ArrayList<Condiment> condiments = new ArrayList<Condiment>();
@@ -72,7 +73,7 @@ public class VendingMachine {
     private Map<Condiment, Integer> condimentsBuying = new HashMap<Condiment, Integer>();
 
     /**
-     * Create a vending machine with the beverage and condiments
+     * Create a vending machine with the beverage and condiments.
      */
     public VendingMachine() {
         super();
@@ -104,19 +105,19 @@ public class VendingMachine {
     }
 
     /**
-     * Select a beverage from the vending machine 
+     * Select a beverage from the vending machine.
      * 
      * @param beverageName a string that represent the name of a beverage
      */
-    public void selectBeverage(String beverageName){
+    public void selectBeverage(String beverageName) {
         try {
             for (Beverage beverage : beverages) {
-                if (beverageName == beverage.getName()){
+                if (beverageName == beverage.getName()) {
                     beverageBuying = beverage;
                 }
             }
 
-            if (beverageBuying == null){
+            if (beverageBuying == null) {
                 throw new Exception("Beverage not in the machine");
             }
         } catch (Exception e) {
@@ -125,24 +126,24 @@ public class VendingMachine {
     }
 
     /**
-     * Select a condiment from the vending machine 
+     * Select a condiment from the vending machine.
      * 
      * @param condimentName a string that represent the name of a condiment
      * @param unit how many unit of condiment is wanted (max = 3)
      */
-    public void selectCondiment(String condimentName, int unit){
+    public void selectCondiment(String condimentName, int unit) {
         try {
-            if (unit < 1 || unit > 3){
+            if (unit < 1 || unit > CONDIMENT_LIMIT) {
                 throw new Exception("condiment unit outside of range");
             }
 
             for (Condiment condiment : condiments) {
-                if (condimentName == condiment.getName()){
+                if (condimentName == condiment.getName()) {
                     condimentsBuying.put(condiment, unit);
                 }
             }
 
-            if (beverageBuying == null){
+            if (beverageBuying == null) {
                 throw new Exception("Condiment not in the machine");
             }
         } catch (Exception e) {
@@ -151,15 +152,15 @@ public class VendingMachine {
     }
 
     /**
-     * Get the price from the selceted beverage and condiments
+     * Get the price from the selceted beverage and condiments.
      * 
      * @return the total price of selected beverage and condiments
      */
-    public double getPrice(){
+    public double getPrice() {
         double result = 0;
 
         try {
-            if (beverageBuying == null) throw new Exception("No beverage selected");
+            if (beverageBuying == null) { throw new Exception("No beverage selected"); }
 
             result += beverageBuying.getPrice();
 
@@ -175,11 +176,11 @@ public class VendingMachine {
     }
 
     /**
-     * Get all beverage's names that the machine is selling
+     * Get all beverage's names that the machine is selling.
      * 
      * @return an array of string that represent the beverage's names
      */
-    public String[] getBeverageMenu(){
+    public String[] getBeverageMenu() {
         String[] result = new String[COFFEE_NAMES.length + TEA_NAMES.length];
         System.arraycopy(COFFEE_NAMES, 0, result, 0, COFFEE_NAMES.length);
         System.arraycopy(TEA_NAMES, 0, result, COFFEE_NAMES.length, TEA_NAMES.length);
@@ -187,11 +188,11 @@ public class VendingMachine {
     }
 
     /**
-     * Get all condiment's names that the machine is selling
+     * Get all condiment's names that the machine is selling.
      * 
      * @return an array of string that represent the condiment's names
      */
-    public String[] getCondimentMenu(){
+    public String[] getCondimentMenu() {
         String[] result = new String[CONDIMENT_NAMES.length];
         System.arraycopy(CONDIMENT_NAMES, 0, result, 0, CONDIMENT_NAMES.length);
         return result;
@@ -212,10 +213,10 @@ public class VendingMachine {
      * @return the condiments selecting
      */
     public Map<String, Integer> getCondimentsBuying() {
-        Map<String, Integer> result = new HashMap<String,Integer>(){{
-            for(Condiment condiment: condimentsBuying.keySet()){
+        Map<String, Integer> result = new HashMap<String,Integer>() {{
+            for(Condiment condiment: condimentsBuying.keySet()) {
                 put(condiment.getName(), condimentsBuying.get(condiment));
-            };
+            }
         }};
         return result;
     }
