@@ -1,10 +1,9 @@
 /**
- * Name: HungHsu(Allen) Chen
- * Course: CS-665 Software Designs & Patterns
- * Date: 09/14/2024
- * File Name: VendingMachine.java
- * Description: This class is responsible for the methods and 
- *              attributes of a Beverage Vending Machine.
+ * Name: HungHsu(Allen) Chen 
+ * Course: CS-665 Software Designs & Patterns 
+ * Date: 09/14/2024 
+ * File Name: VendingMachine.java 
+ * Description: This class is responsible for the methods and attributes of a Beverage Vending Machine.
  */
 
 package edu.bu.met.cs665;
@@ -18,12 +17,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This is the Condiment class.
- * This class is responsible for representing a beverage vending machine.
+ * This is the Condiment class. This class is responsible for representing a beverage vending
+ * machine.
  */
 public class VendingMachine {
     // Types of Coffee in the machine
-    public static final String[] COFFEE_NAMES = new String[] { "Espresso", "Americano", "Latte Macchiato" };
+    public static final String[] COFFEE_NAMES =
+            new String[] {"Espresso", "Americano", "Latte Macchiato"};
     private static final Map<String, Double> COFFEE_PRICES = new HashMap<String, Double>() {
         {
             put("Espresso", 4.7);
@@ -47,7 +47,7 @@ public class VendingMachine {
     };
 
     // Types of tea in machine
-    public static final String[] TEA_NAMES = new String[] { "Black Tea", "Green Tea", "Yellow Tea" };
+    public static final String[] TEA_NAMES = new String[] {"Black Tea", "Green Tea", "Yellow Tea"};
     private static final Map<String, Double> TEA_PRICES = new HashMap<String, Double>() {
         {
             put("Black Tea", 5.75);
@@ -71,7 +71,7 @@ public class VendingMachine {
     };
 
     // Types of condiments in machine
-    public static final String[] CONDIMENT_NAMES = new String[] { "Milk", "Sugar", "Ice" };
+    public static final String[] CONDIMENT_NAMES = new String[] {"Milk", "Sugar", "Ice"};
     private static final Map<String, Double> CONDIMENT_PRICES = new HashMap<String, Double>() {
         {
             put("Milk", 0.5);
@@ -94,19 +94,13 @@ public class VendingMachine {
         super();
         // add coffee to the machine
         for (String coffeeName : COFFEE_NAMES) {
-            Coffee coffee = new Coffee(
-                    COFFEE_PRICES.get(coffeeName),
-                    coffeeName,
-                    COFFEE_DESC.get(coffeeName),
-                    COFFEE_BEAN.get(coffeeName));
+            Coffee coffee = new Coffee(COFFEE_PRICES.get(coffeeName), coffeeName,
+                    COFFEE_DESC.get(coffeeName), COFFEE_BEAN.get(coffeeName));
             beverages.add(coffee);
         }
         // add tea to the machine
         for (String teaName : TEA_NAMES) {
-            Tea tea = new Tea(
-                    TEA_PRICES.get(teaName),
-                    teaName,
-                    TEA_DESC.get(teaName),
+            Tea tea = new Tea(TEA_PRICES.get(teaName), teaName, TEA_DESC.get(teaName),
                     TEA_LEAF.get(teaName));
             beverages.add(tea);
         }
@@ -142,7 +136,7 @@ public class VendingMachine {
      * Select a condiment from the vending machine.
      * 
      * @param condimentName a string that represent the name of a condiment
-     * @param unit          how many unit of condiment is wanted (max = 3)
+     * @param unit how many unit of condiment is wanted (max = 3)
      */
     public void selectCondiment(String condimentName, int unit) {
         try {
