@@ -11,7 +11,6 @@ import edu.bu.met.cs665.condiment.Condiment;
  */
 public class TestCondiment {
     public TestCondiment() {
-        super();
     }
 
     @Test

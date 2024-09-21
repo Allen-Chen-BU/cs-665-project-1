@@ -23,47 +23,62 @@ import java.util.Map;
  */
 public class VendingMachine {
     // Types of Coffee in the machine
-    private final String[] COFFEE_NAMES = new String[] {"Espresso", "Americano", "Latte Macchiato"};
-    private final Map<String, Double> COFFEE_PRICES = new HashMap<String, Double>() {{
-        put("Espresso", 4.7);
-        put("Americano", 2.62);
-        put("Latte Macchiato", 3.65);
-    }};
-    private final Map<String, String> COFFEE_BEAN = new HashMap<String, String>() {{
-        put("Espresso", "Arabica");
-        put("Americano", "Arabica");
-        put("Latte Macchiato", "Arabica");
-    }};
-    private final Map<String, String> COFFEE_DESC = new HashMap<String, String>() {{
-        put("Espresso", "Concentrate Coffee");
-        put("Americano", "Espresso with water");
-        put("Latte Macchiato", "Espresso with milk");
-    }};
+    public static final String[] COFFEE_NAMES = new String[] { "Espresso", "Americano", "Latte Macchiato" };
+    private static final Map<String, Double> COFFEE_PRICES = new HashMap<String, Double>() {
+        {
+            put("Espresso", 4.7);
+            put("Americano", 2.62);
+            put("Latte Macchiato", 3.65);
+        }
+    };
+    private static final Map<String, String> COFFEE_BEAN = new HashMap<String, String>() {
+        {
+            put("Espresso", "Arabica");
+            put("Americano", "Arabica");
+            put("Latte Macchiato", "Arabica");
+        }
+    };
+    private static final Map<String, String> COFFEE_DESC = new HashMap<String, String>() {
+        {
+            put("Espresso", "Concentrate Coffee");
+            put("Americano", "Espresso with water");
+            put("Latte Macchiato", "Espresso with milk");
+        }
+    };
 
     // Types of tea in machine
-    private final String[] TEA_NAMES = new String[] {"Black Tea", "Green Tea", "Yellow Tea"};
-    private final Map<String, Double> TEA_PRICES = new HashMap<String, Double>() {{
-        put("Black Tea", 5.75);
-        put("Green Tea", 3.99);
-        put("Yellow Tea", 5.0);
-    }};
-    private final Map<String, String> TEA_LEAF = new HashMap<String, String>() {{
-        put("Black Tea", "Camellia sinensis assamica");
-        put("Green Tea", "Camellia sinensis");
-        put("Yellow Tea", "Camellia sinensis");
-    }};
-    private final Map<String, String> TEA_DESC = new HashMap<String, String>() {{
-        put("Black Tea", "A smoky and fruity tea");
-        put("Green Tea", "A tea");
-        put("Yellow Tea", "A lightly oxidized tea");
-    }};
+    public static final String[] TEA_NAMES = new String[] { "Black Tea", "Green Tea", "Yellow Tea" };
+    private static final Map<String, Double> TEA_PRICES = new HashMap<String, Double>() {
+        {
+            put("Black Tea", 5.75);
+            put("Green Tea", 3.99);
+            put("Yellow Tea", 5.0);
+        }
+    };
+    private static final Map<String, String> TEA_LEAF = new HashMap<String, String>() {
+        {
+            put("Black Tea", "Camellia sinensis assamica");
+            put("Green Tea", "Camellia sinensis");
+            put("Yellow Tea", "Camellia sinensis");
+        }
+    };
+    private static final Map<String, String> TEA_DESC = new HashMap<String, String>() {
+        {
+            put("Black Tea", "A smoky and fruity tea");
+            put("Green Tea", "A tea");
+            put("Yellow Tea", "A lightly oxidized tea");
+        }
+    };
 
     // Types of condiments in machine
-    private final String[] CONDIMENT_NAMES = new String[] {"Milk", "Sugar"};
-    private final Map<String, Double> CONDIMENT_PRICES = new HashMap<String, Double>() {{
-        put("Milk", 0.5);
-        put("Sugar", 0.5);
-    }};
+    public static final String[] CONDIMENT_NAMES = new String[] { "Milk", "Sugar", "Ice" };
+    private static final Map<String, Double> CONDIMENT_PRICES = new HashMap<String, Double>() {
+        {
+            put("Milk", 0.5);
+            put("Sugar", 0.5);
+            put("Ice", 0.0);
+        }
+    };
     public static final int CONDIMENT_LIMIT = 3;
 
     private ArrayList<Beverage> beverages = new ArrayList<Beverage>();
@@ -80,21 +95,19 @@ public class VendingMachine {
         // add coffee to the machine
         for (String coffeeName : COFFEE_NAMES) {
             Coffee coffee = new Coffee(
-                COFFEE_PRICES.get(coffeeName), 
-                coffeeName, 
-                COFFEE_DESC.get(coffeeName), 
-                COFFEE_BEAN.get(coffeeName)
-            );
+                    COFFEE_PRICES.get(coffeeName),
+                    coffeeName,
+                    COFFEE_DESC.get(coffeeName),
+                    COFFEE_BEAN.get(coffeeName));
             beverages.add(coffee);
         }
         // add tea to the machine
         for (String teaName : TEA_NAMES) {
             Tea tea = new Tea(
-                TEA_PRICES.get(teaName), 
-                teaName, 
-                TEA_DESC.get(teaName), 
-                TEA_LEAF.get(teaName)
-            );
+                    TEA_PRICES.get(teaName),
+                    teaName,
+                    TEA_DESC.get(teaName),
+                    TEA_LEAF.get(teaName));
             beverages.add(tea);
         }
         // add condiments
@@ -129,7 +142,7 @@ public class VendingMachine {
      * Select a condiment from the vending machine.
      * 
      * @param condimentName a string that represent the name of a condiment
-     * @param unit how many unit of condiment is wanted (max = 3)
+     * @param unit          how many unit of condiment is wanted (max = 3)
      */
     public void selectCondiment(String condimentName, int unit) {
         try {
@@ -141,10 +154,6 @@ public class VendingMachine {
                 if (condimentName == condiment.getName()) {
                     condimentsBuying.put(condiment, unit);
                 }
-            }
-
-            if (beverageBuying == null) {
-                throw new Exception("Condiment not in the machine");
             }
         } catch (Exception e) {
             System.err.println(e.getMessage());
@@ -160,7 +169,9 @@ public class VendingMachine {
         double result = 0;
 
         try {
-            if (beverageBuying == null) { throw new Exception("No beverage selected"); }
+            if (beverageBuying == null) {
+                throw new Exception("No beverage selected");
+            }
 
             result += beverageBuying.getPrice();
 
@@ -213,11 +224,13 @@ public class VendingMachine {
      * @return the condiments selecting
      */
     public Map<String, Integer> getCondimentsBuying() {
-        Map<String, Integer> result = new HashMap<String,Integer>() {{
-            for(Condiment condiment: condimentsBuying.keySet()) {
-                put(condiment.getName(), condimentsBuying.get(condiment));
+        Map<String, Integer> result = new HashMap<String, Integer>() {
+            {
+                for (Condiment condiment : condimentsBuying.keySet()) {
+                    put(condiment.getName(), condimentsBuying.get(condiment));
+                }
             }
-        }};
+        };
         return result;
     }
 }
