@@ -10,12 +10,11 @@ import edu.bu.met.cs665.condiment.Condiment;
  * Unit test for testing condiment
  */
 public class TestCondiment {
-    public TestCondiment() {
-    }
+  public TestCondiment() {}
 
-    @Test
-    public void TestEquals(){
-        Condiment condiment = new Condiment("Milk", 0.5);
-        assertEquals(condiment, new Condiment("Milk", 0.5));
-    }
+  @Test
+  public void TestEquals() {
+    Condiment condiment = new Condiment("Milk", 0.5);
+    assertEquals(condiment, new Condiment("Milk", 0.5));
+  }
 }
